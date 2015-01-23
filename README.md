@@ -15,7 +15,7 @@ bash2rsyslog
           syslog (SYSLOG_FACILITY|SYSLOG_LEVEL, "HISTORY (TRUNCATED): PID=%d  PPID=%d SID=%d User=%s CMD=%s", getpid(), getppid(), getsid(getpid()),  current_user.user_name, trunc);
         }
     # 修改源码 bashhist.c
-    vi config-top.h  取消/*#define SYSLOG\_HISTORY*/这行的注释
+    vi config-top.h  取消/*#define SYSLOG_HISTORY*/这行的注释
     
     # 解压、编译、安装
     tar xvf bash-4.3.tar.gz -C /usr/local/src/
@@ -30,3 +30,13 @@ bash2rsyslog
     chattr +i /etc/passwd /etc/shadow
     cd -
     rm -rf bash-4.3.tar.gz /usr/local/src/bash-4.3/
+    
+    # 加固
+    rm ~/.bash_history
+    ln -s /dev/null  ~/.bash_history
+    chattr +a ~/.bash_history   【sappnd /home/bob/.bash_history （freebsd）】
+    chattr +a ~/.bash_profile  
+    chattr +a ~/.bash_login
+    chattr +a ~/.profile 
+    chattr +a ~/.bash_logout
+    chattr +a ~/.bashrc

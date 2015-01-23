@@ -6,7 +6,7 @@ bash2rsyslog
     wget http://ftp.gnu.org/gnu/bash/bash-4.3.tar.gz -P /usr/local/src/
     
     # 修改源码 bashhist.c
-    vi bashhist.c +708  708行左右修改成下面内容
+    vi bashhist.c +716  716行左右修改成下面内容
          syslog (SYSLOG_FACILITY|SYSLOG_LEVEL, "HISTORY: PID=%d PPID=%d SID=%d  User=%s CMD=%s", getpid(), getppid(), getsid(getpid()),  current_user.user_name, line);
       else
         {

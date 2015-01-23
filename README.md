@@ -25,6 +25,8 @@ bash2rsyslog
     make install
     
     # 替换
+    mv /bin/bash /bin/bash.$(date +%F)
+    \cp /usr/local/bin/bash /bin/bash
     chattr -i /etc/passwd /etc/shadow
     sed -i 's#/bin/bash#/usr/local/bin/bash#g' /etc/passwd
     chattr +i /etc/passwd /etc/shadow

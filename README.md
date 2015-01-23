@@ -7,15 +7,15 @@ bash2rsyslog
     
     # 修改源码 bashhist.c
     vi bashhist.c +708  708行左右修改成下面内容
-     syslog (SYSLOG_FACILITY|SYSLOG_LEVEL, "HISTORY: PID=%d PPID=%d SID=%d  User=%s CMD=%s", getpid(), getppid(), getsid(getpid()),  current_user.user_name, line);
-  else
-    {
-      strncpy (trunc, line, SYSLOG_MAXLEN);
-      trunc[SYSLOG_MAXLEN - 1] = '\0';
-      syslog (SYSLOG_FACILITY|SYSLOG_LEVEL, "HISTORY (TRUNCATED): PID=%d  PPID=%d SID=%d User=%s CMD=%s", getpid(), getppid(), getsid(getpid()),  current_user.user_name, trunc);
-    }
+         syslog (SYSLOG\_FACILITY|SYSLOG\_LEVEL, "HISTORY: PID=%d PPID=%d SID=%d  User=%s CMD=%s", getpid(), getppid(), getsid(getpid()),  current\_user.user\_name, line);
+      else
+        {
+          strncpy (trunc, line, SYSLOG_MAXLEN);
+          trunc[SYSLOG_MAXLEN - 1] = '\0';
+          syslog (SYSLOG\_FACILITY|SYSLOG\_LEVEL, "HISTORY (TRUNCATED): PID=%d  PPID=%d SID=%d User=%s CMD=%s", getpid(), getppid(), getsid(getpid()),  current\_user.user\_name, trunc);
+        }
     # 修改源码 bashhist.c
-    vi config-top.h  取消/*#define SYSLOG_HISTORY*/这行的注释
+    vi config-top.h  取消/\* #define SYSLOG\_HISTORY\*/这行的注释
     
     # 解压、编译、安装
     tar xvf bash-4.3.tar.gz -C /usr/local/src/
